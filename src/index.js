@@ -8,18 +8,18 @@ const dockerHub = "https://registry-1.docker.io";
 
 const routes = {
   // production
-  "docker-acc.kengwang.workers.dev": dockerHub,
-  "docker.docker-acc.kengwang.workers.dev": dockerHub,
-  "quay.docker-acc.kengwang.workers.dev": "https://quay.io",
-  "gcr.docker-acc.kengwang.workers.dev": "https://gcr.io",
-  "k8s-gcr.docker-acc.kengwang.workers.dev": "https://k8s.gcr.io",
-  "k8s.docker-acc.kengwang.workers.dev": "https://registry.k8s.io",
-  "ghcr.docker-acc.kengwang.workers.dev": "https://ghcr.io",
-  "cloudsmith.docker-acc.kengwang.workers.dev": "https://docker.cloudsmith.io",
-  "ecr.docker-acc.kengwang.workers.dev": "https://public.ecr.aws",
+  "docker-acc.kengwang.top": dockerHub,
+  "docker.docker-acc.kengwang.top": dockerHub,
+  "quay.docker-acc.kengwang.top": "https://quay.io",
+  "gcr.docker-acc.kengwang.top": "https://gcr.io",
+  "k8s-gcr.docker-acc.kengwang.top": "https://k8s.gcr.io",
+  "k8s.docker-acc.kengwang.top": "https://registry.k8s.io",
+  "ghcr.docker-acc.kengwang.top": "https://ghcr.io",
+  "cloudsmith.docker-acc.kengwang.top": "https://docker.cloudsmith.io",
+  "ecr.docker-acc.kengwang.top": "https://public.ecr.aws",
 
   // staging
-  "docker-staging.docker-acc.kengwang.workers.dev": dockerHub,
+  "docker-staging.docker-acc.kengwang.top": dockerHub,
 };
 
 function routeByHosts(host) {
