@@ -1,3 +1,4 @@
+import DOCS from './help.html'
 addEventListener("fetch", (event) => {
   event.passThroughOnException();
   event.respondWith(handleRequest(event.request));
@@ -7,17 +8,18 @@ const dockerHub = "https://registry-1.docker.io";
 
 const routes = {
   // production
-  "docker.libcuda.so": dockerHub,
-  "quay.libcuda.so": "https://quay.io",
-  "gcr.libcuda.so": "https://gcr.io",
-  "k8s-gcr.libcuda.so": "https://k8s.gcr.io",
-  "k8s.libcuda.so": "https://registry.k8s.io",
-  "ghcr.libcuda.so": "https://ghcr.io",
-  "cloudsmith.libcuda.so": "https://docker.cloudsmith.io",
-  "ecr.libcuda.so": "https://public.ecr.aws",
+  "docker-acc.kengwang.workers.dev": dockerHub,
+  "docker.docker-acc.kengwang.workers.dev": dockerHub,
+  "quay.docker-acc.kengwang.workers.dev": "https://quay.io",
+  "gcr.docker-acc.kengwang.workers.dev": "https://gcr.io",
+  "k8s-gcr.docker-acc.kengwang.workers.dev": "https://k8s.gcr.io",
+  "k8s.docker-acc.kengwang.workers.dev": "https://registry.k8s.io",
+  "ghcr.docker-acc.kengwang.workers.dev": "https://ghcr.io",
+  "cloudsmith.docker-acc.kengwang.workers.dev": "https://docker.cloudsmith.io",
+  "ecr.docker-acc.kengwang.workers.dev": "https://public.ecr.aws",
 
   // staging
-  "docker-staging.libcuda.so": dockerHub,
+  "docker-staging.docker-acc.kengwang.workers.dev": dockerHub,
 };
 
 function routeByHosts(host) {
@@ -32,6 +34,15 @@ function routeByHosts(host) {
 
 async function handleRequest(request) {
   const url = new URL(request.url);
+  if (url.pathname === "/" || url.pathname === "")
+  {
+    return new Response(DOCS, {
+      status: 200,
+      headers: {
+        "content-type": "text/html"
+      }
+    });
+  }
   const upstream = routeByHosts(url.hostname);
   if (upstream === "") {
     return new Response(
